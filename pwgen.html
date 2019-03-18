@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>pwgen</title>
+    <meta charset="utf-8">
+    <script src="./pwgen.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <h3>PWGEN</h3>
+    <input type="number" id="number"></input>
+    <input type="button" id="passgen" value="PWGEN"></input>
+    <br>
+    <div id="pass_out" style="font-family: monospace"></div>
+    <script>
+      var length = 0;
+      document.getElementById('passgen').addEventListener('click', function () {
+        length = document.getElementById('number').value;
+        if (length > 0) {
+          var newPass = pwgen(length);
+          console.log(newPass)
+          document.getElementById('pass_out').innerHTML = newPass;
+        }
+        else {
+          console.log("noob");
+          document.getElementById('pass_out').innerHTML = "<h4>NUMBER IS TOO LOW</h4>";
+        };
+
+      });
+
+    </script>
+  </body>
+</html>

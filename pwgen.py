@@ -11,7 +11,7 @@ def main():
         print("Not a number")
         exit()
 
-    chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!"£$%^&*(){}[];:\'#~?<>,.\\=+-_*/|'
+    chars = '<>!"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~'
 
     rtn_pw = ''
 
