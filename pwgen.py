@@ -1,28 +1,59 @@
 from random import choice
 
-def main():
+basic = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+basicUrlsafe = basic + "-_"
+mediumUrlReserved = basicUrlsafe + ";/?:@=&"
+mediumUtf8 = "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~="
+high = basic + "!\"#$%&'()*+,-./:;=?@[]^_`{}~|¬¦"
+veryHigh = basic + "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüý"
 
-    print("pass gen")
-    length = input("length of password? ")
+def main():
+    print('Password Generator v2')
+    pLength = input('Length of password? ')
+    pComplexity = input(
+        '1) basic (alphanum)\n' +
+        '2) basic url-safe\n' +
+        '3) medium url-reserved\n' +
+        '4) medium UTF-8\n' +
+        '5) high\n' +
+        '6) very high - ascii\n'
+    )
 
     try:
-        length = int(length)
-    except TypeError:
-        print("Not a number")
+        pLength = int(pLength)
+        pComplexity = int(pComplexity)
+    except:
+        print('provide a number. exit.')
         exit()
 
-    chars = '<>!"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~'
 
-    rtn_pw = ''
-
-    for i in range(length):
-        rtn_pw = rtn_pw + choice(chars)
-
-    pretty = 's' if length > 1 else ''
-
-    print(f'your new password of {length} character{pretty}:')
-    print(rtn_pw)
-    exit()
+    if (0 == pComplexity or 1 == pComplexity):
+        charSet = basic
+        charsetName = "basic (alphanum)"
+    elif (2 == pComplexity):
+        charSet = basicUrlsafe
+        charsetName = "basic url-safe"
+    elif (3 == pComplexity):
+        charSet = mediumUrlReserved
+        charsetName = "medium url-reserved"
+    elif (4 == pComplexity):
+        charSet = mediumUtf8
+        charsetName = "medium UTF-8"
+    elif (5 == pComplexity):
+        charSet = high
+        charsetName = "hgh"
+    elif (6 == pComplexity):
+        charSet = veryHigh
+        charsetName = "very high - ascii"    
+    
+    loop = ''
+    while (loop != 'q'):
+        output = ''
+        print(f'\n length = {pLength} choice = {charsetName}')
+        for i in range(pLength):
+            output = output + choice(charSet)
+        print(output)
+        loop = input('Any key to generate another. \'q\' to quit')
 
 if __name__ == "__main__":
     main()
